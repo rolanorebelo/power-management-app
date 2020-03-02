@@ -1,0 +1,383 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background: rgb(10,10,44);
+  background: linear-gradient(121deg, rgba(10,10,44,1) 5%, rgba(28,96,87,1) 48%, rgba(10,21,53,1) 88%);
+  color: white;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgba(2, 2, 17, 0.8);
+  font-family: 'Comfortaa', cursive;
+}
+
+li.navbar {
+  float: left;
+}
+
+li.navbar a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.navbar a:hover {
+  background-color: #111;
+}
+
+
+.active{
+  background-color: #0F183D;
+}
+
+
+ul.applist {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ ul.applist li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ ul.applist li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+ul.applist li:hover {
+  background: #ddd;
+}
+
+
+/*
+input {
+  margin: 0;
+  border: 2px solid grey;
+  border-radius: 0;
+  width: 15%;
+  padding: 15px;
+  font-size: 15px;
+  margin: 10px;
+}
+
+.addBtn {
+  margin-left: 10px;
+  padding: 15px;
+  width: 10%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+*/
+.applist{
+  justify-content: flex-start;
+  display: inline-flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+h2.app{
+  margin-top: -300px;
+  position: static;
+  margin-left: 250px;
+}
+
+
+/*.container{
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 150%;
+
+}
+
+.app-column {
+  display: flex;
+  flex-direction: column;
+
+}
+.load-column {
+  display: flex;
+  flex-direction: column;
+}*/
+
+.item {
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+}
+
+.hd{
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.container>div {
+  flex: 0 50%;
+  width: 60px;
+  height: 4em;
+  text-align: center;
+  /*demo*/
+  border: rgba(200,200,200,0.2) solid;
+  box-sizing:border-box;
+  justify-content: center;
+
+}
+
+header{
+ font-family: 'Righteous', cursive;
+  text-align: center;
+  color: black;
+  margin: 0;
+  font-size: 2.2em;
+  padding: 5px;
+  background: rgb(8,233,203);
+  border-bottom: 2px solid black;
+background: radial-gradient(circle, rgba(8,233,203,1) 12%, rgba(18,172,111,1) 53%, rgba(10,67,71,1) 88%);
+
+}
+/*  @media screen and (min-width:320px){
+          .article, .container{
+            display: block;
+          }
+       }
+
+ @media screen and (min-width:768px){
+          .article, .container{
+            display: flex;
+          }
+*/
+
+.article{
+  
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  float: right;
+  text-align: center;
+/*  margin-top: 100px;*/
+  margin-right: 100px;
+  margin-top: -300px;
+  flex-wrap: nowrap;
+  font-size: 20px;
+}
+.buysell{
+  margin-top: 50px;
+}
+.tariff{
+  position: relative;
+  z-index: -1;
+  margin-top: 6rem;
+  border: initial;
+  padding: 0;
+  margin-left: 15rem;
+  margin-right: auto;
+  width: 80%;
+  vertical-align: middle;
+  text-align: center;
+  display: block;
+  overflow: hidden;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 20px;
+}
+.putil, .pgen, .prem{
+  font-family: 'Source Code Pro', monospace;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.powerutil, .powergen, .powerrem{
+  margin:5px;
+  height: 20px;
+  width: 60px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #13DBC1;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*.button {
+  background: transparent;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  width: 100px;
+}
+
+.button1 {
+  color: #808080;
+  border: 2px solid #e7e7e7;
+}
+
+.button:active, .button:focus, .button:visited {
+  outline: none;
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: none;
+  padding: 15px;
+  width: 50%;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+*/
+.button {
+  background-color: #4CAF50; /* Green */
+  border-radius: 12px;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button5 {
+  background-color: transparent;
+  color: white;
+  border: 2px solid black;
+}
+
+.button5:hover {
+  background-color: rgba(0,0,0,0.3);
+  color: #13DBC1;
+
+}

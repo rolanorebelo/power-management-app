@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/index.css" media="print">
+	<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+</head>
+<body>
+	<div id="particles-js"></div>
+	<script src="js/particles.js"></script>
+	<script src="js/app.js"></script>
+	<ul>
+  <li><a class="active" href="index">Welcome</a></li>
+  <li><a href="home">Home</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li style="float:right"><a class="sout" href="login">Sign In</a></li>
+  <li style="float:right"><a class="sout" href="signup">Sign Up</a></li>
+</ul>
+	<article class="br3 ba  b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+    <main class="pa4 black-80">
+  <form action="/users/signup" method="POST" accept-charset="utf-8">
+    <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
+      <legend class="f4 fw6 ph0 mh0">Sign Up</legend>
+       <div class="mt3">
+        <label class="db fw6 lh-copy f6" for="name">Full Name</label>
+        <input class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="name" name="name"  id="name">
+        <label class="db fw6 lh-copy f6" for="email">Email</label>
+      <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email" id="email">
+      </div>
+      <div class="mv3">
+        <label class="db fw6 lh-copy f6" for="password">Password</label>
+        <input class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password">
+      </div>
+    </fieldset>
+    <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Sign Up"></div>
+  </form>
+</main>
+</article>
+</body>
+</html>
