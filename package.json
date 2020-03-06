@@ -13,10 +13,23 @@
     "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "debug": "^4.1.1",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.0",
+    "gpio": "^0.2.10",
+    "init": "^0.1.2",
+    "jquery": "^3.4.1",
+    "jsdom": "^16.2.0",
     "mongoose": "^5.9.2",
-    "particles.js": "^2.0.0"
+    "particles.js": "^2.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "socket.io": "^2.3.0",
+    "static-favicon": "^2.0.0-alpha"
   }
 }

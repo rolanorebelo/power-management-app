@@ -4,15 +4,15 @@
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa:600&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
 <script src="js/particles.js"></script>
-<script src="js/home.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <ul class="navbar">
   <li class="navbar"><a class="active" href="index">Welcome</a></li>
   <li class="navbar"><a href="home">Home</a></li>
-  <li class="navbar"><a href="#contact">Contact</a></li>
+  <!-- <li class="navbar"><a href="#contact">Contact</a></li> -->
 </ul>
 <header> User Page </header>
 <div class="tariff">
@@ -37,13 +37,13 @@
 <div class="article"> 
 	<div class="putil">
 		<label>Power Utlised</label>
-		<input class="powerutil" type="number" name="powerutilised">
+		<p id="power_con"></p>
 	</div>
 	<div class="pgen">
 		<label>Power Generated</label>
 		<!-- <input class="powergen" type="number" name="powergenerated"> -->
 		<!-- <a href="/load-data">Load Value</a> -->
-		<h4> <%= rol.power %> </h4>
+		<h4> <%= rol.Power %> </h4>
 	</div>
 	<br>
 	<br>
@@ -63,32 +63,100 @@
   	<div class="item hd"><label>Load</label>
  
   	</div>
-  	<div class="item"><label>AC</label>
+		<div class="item"><label>AC</label>
+		
   	<label class="switch">
-				  <input type="checkbox">
+			<input type="checkbox" id="ac">
 				  <span class="slider round"></span>
-				</label></div>
+	</label></div>
   	<div class="item"><label>100</label></div>
   	<div class="item"><label style="margin-left: -5.5em;">Electric Vehicle</label>
   	<label class="switch">
-				  <input type="checkbox">
+				  <input type="checkbox" id="ev">
 				  <span class="slider round"></span>
 				</label></div>
   	<div class="item"><label>200</label></div>
   	<div class="item"><label style="margin-left: -5.5em;">Washing Machine</label>
   	<label class="switch">
-				  <input type="checkbox">
+				  <input type="checkbox" id="wm">
 				  <span class="slider round"></span>
 				</label></div>
   	<div class="item"><label>300</label></div>
   	<div class="item"><label>Pump</label>
   	<label class="switch">
-				  <input type="checkbox">
+				  <input type="checkbox" id="pu">
 				  <span class="slider round"></span>
 				</label></div>
   	<div class="item"><label>600</label></div>
   </div>
 </div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<!--
+    <script type="text/javascript">
+    var socket = io.connect('/home');
+
+    $("#myonoffswitch").change(function(){
+      socket.emit("stateChanged", this.checked);
+    });
+		</script> -->
+		
+		<script>
+// 			$("input[type='checkbox']").change(function(){
+//     if($(this).is(":checked")){
+//         $(this).parent().addClass("redBackground"); 
+//     }else{
+//         $(this).parent().removeClass("redBackground");  
+//     }
+// });
+// var powcon;
+// var MongoClient = require('mongodb').MongoClient;
+// var url = "mongodb://localhost:27017/powerDB";
+
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   var dbo = db.db("powerDB");
+//   var myobj = { power_con: 0 };
+//   dbo.collection("Power_Consumed").insertOne(myobj, function(err, res) {
+//     if (err) throw err;
+//     console.log("1 document inserted");
+//     db.close();
+//   });
+// });
+
+			var socket = io(); //load socket.io-client and connect to the host that serves the page
+			window.addEventListener("load", function(){ //when page loads
+				var ac = document.getElementById("ac");
+				ac.addEventListener("change", function() { //add event listener for when checkbox changes
+					socket.emit("AC", Number(this.checked)); //send button status to server (as 1 or 0)
+					if(this.checked=='1')
+
+					powcon = powcon + 100;
+				});
+				var ev = document.getElementById("ev");
+				ev.addEventListener("change", function() { //add event listener for when checkbox changes
+					socket.emit("Electric Vehicle", Number(this.checked)); //send button status to server (as 1 or 0)
+				});
+				var wm = document.getElementById("wm");
+				wm.addEventListener("change", function() { //add event listener for when checkbox changes
+					socket.emit("Washing Machine", Number(this.checked)); //send button status to server (as 1 or 0)
+				});
+				var pu = document.getElementById("pu");
+				pu.addEventListener("change", function() { //add event listener for when checkbox changes
+					socket.emit("Pump", Number(this.checked)); //send button status to server (as 1 or 0)
+				});
+			});
+			document.getElementById("power_con").innerHTML = powcon;
+			// if(document.getElementById("ac").checked){
+			// 	powcon = powcon + 100;
+			// }
+			// else{
+			// 	powcon = powcon + 100;
+			// }
+			
+			</script>
 
 </body>
 </html>
