@@ -10,46 +10,54 @@
 <script src="js/particles.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <ul class="navbar">
-  <li class="navbar"><a class="active" href="index">Welcome</a></li>
+  <li class="navbar"><a href="index">Welcome</a></li>
   <li class="navbar"><a href="home">Home</a></li>
   <!-- <li class="navbar"><a href="#contact">Contact</a></li> -->
 </ul>
-<header> User Page </header>
+<header> User Dashboard </header>
 <div class="tariff">
-		<label>Earned from Selling Power : ₹</label>
-		<input class="earned" type="number" name="earned" placeholder="Amount">
-		<br><br><br>
-		<label>Tariff: ₹</label>
-		<input class="tariffpay" type="number" name="tariffpay" placeholder="Amount">
-		<div class="buysell">
+		<label>Earned from Selling Power to MicroGrid: </label>
+		<!-- <input class="earned" type="number" name="earned" placeholder="Amount"> -->
+		<h4> ₹ <%= Number(wallet.earned).toFixed(4) %> </h4>
+		
+		<label>Tariff for bought power : </label>
+		<h4> ₹ <%= Number(wallet.owes).toFixed(4) %> </h4>
+		<!-- <input class="tariffpay" type="number" name="tariffpay" placeholder="Amount"> -->
+		<div class="buysell" id="bs">
 		<div>
 			<p> Do you want to sell the power? </p>
-			<button class="button button5">Yes</button>
-			<button class="button button5">No</button>
+			<button class="button button5" id="syes">Yes</button>
+			<button   class="button button5" id="sno">No</button>
+			<div id="output"></div>
 		</div>
 		<div>
 			<p> Do you want to buy power? </p>
-			<button class="button button5">Yes</button>
+			<button class="button button5" id="byes" >Yes</button>
 			<button class="button button5">No</button>
+			<div id="output1"></div>
 		</div>
+	
 		</div>
 </div>
 <div class="article"> 
 	<div class="putil">
-		<label>Power Utlised</label>
-		<p id="power_con"></p>
+		<label>Power Utlised (in Watts)</label>
+		<p id="power_con"> </p>
+		<h4> <%= Number(powconn.PCon).toFixed(4) %> </h4>
 	</div>
 	<div class="pgen">
-		<label>Power Generated</label>
-		<!-- <input class="powergen" type="number" name="powergenerated"> -->
-		<!-- <a href="/load-data">Load Value</a> -->
-		<h4> <%= rol.Power %> </h4>
+		<label>Power Generated (in Watts)</label>
+		<h4> <%= Number(powergen.Power).toFixed(4) %> </h4>
 	</div>
 	<br>
 	<br>
 	<div class="prem">
-		<label>Power Remaining</label>
-		<input class="powerrem" type="number" name="powerremaining">
+		<label>Power Remaining (after buying/selling)</label>
+		<div class="powerrem" type="number" name="powerremaining" ></div>
+		<h4> <%= Number(updated_pow.PowerRemaining).toFixed(4) %> </h4>
+		<label>Power Remaining (inital)</label>
+		<div class="powerrem" type="number" name="powerremaining" ></div>
+		<h4> <%= Number(powerrem.PowerRemaining).toFixed(4) %> </h4>
 	</div>
 	
 
@@ -60,105 +68,153 @@
   <div class="container">
   	<div class="item hd"><label>Appliance Name</label>
 			</div>
-  	<div class="item hd"><label>Load</label>
+  	<div class="item hd"><label>Load  (Watts)</label>
  
   	</div>
 		<div class="item"><label>AC</label>
 		
   	<label class="switch">
-			<input type="checkbox" id="ac">
+			
+			<input type="checkbox" id="ac" name="ac" class="save-cb-state">
 				  <span class="slider round"></span>
 	</label></div>
-  	<div class="item"><label>100</label></div>
+  	<div class="item"><label>1000</label></div>
   	<div class="item"><label style="margin-left: -5.5em;">Electric Vehicle</label>
   	<label class="switch">
-				  <input type="checkbox" id="ev">
+				  <input type="checkbox" id="ev" name="ev" class="save-cb-state"> 
 				  <span class="slider round"></span>
 				</label></div>
-  	<div class="item"><label>200</label></div>
+  	<div class="item"><label>2000</label></div>
   	<div class="item"><label style="margin-left: -5.5em;">Washing Machine</label>
   	<label class="switch">
-				  <input type="checkbox" id="wm">
+				  <input type="checkbox" id="wm" class="save-cb-state">
 				  <span class="slider round"></span>
 				</label></div>
   	<div class="item"><label>300</label></div>
   	<div class="item"><label>Pump</label>
   	<label class="switch">
-				  <input type="checkbox" id="pu">
+				  <input type="checkbox" id="pu" class="save-cb-state">
 				  <span class="slider round"></span>
 				</label></div>
-  	<div class="item"><label>600</label></div>
+  	<div class="item"><label>1000</label></div>
   </div>
 </div>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-<!--
-    <script type="text/javascript">
-    var socket = io.connect('/home');
 
-    $("#myonoffswitch").change(function(){
-      socket.emit("stateChanged", this.checked);
-    });
-		</script> -->
 		
 		<script>
-// 			$("input[type='checkbox']").change(function(){
-//     if($(this).is(":checked")){
-//         $(this).parent().addClass("redBackground"); 
-//     }else{
-//         $(this).parent().removeClass("redBackground");  
-//     }
-// });
-// var powcon;
-// var MongoClient = require('mongodb').MongoClient;
-// var url = "mongodb://localhost:27017/powerDB";
+// document.getElementById("bs").style.visibility="hidden";
 
-// MongoClient.connect(url, function(err, db) {
-//   if (err) throw err;
-//   var dbo = db.db("powerDB");
-//   var myobj = { power_con: 0 };
-//   dbo.collection("Power_Consumed").insertOne(myobj, function(err, res) {
-//     if (err) throw err;
-//     console.log("1 document inserted");
-//     db.close();
-//   });
-// });
+
+var output = document.getElementById('output');
+var output1 = document.getElementById('output1');
+function onClickBox() {
+				let checked=$("#ac").is(":checked");
+				localStorage.setItem("checked", checked);
+		
+			}
+			function onReady() {
+		
+				let checked="true"==localStorage.getItem("checked");
+				$("#ac").prop('checked', checked);
+				$("#ac").click(onClickBox);
+			}
+			$(document).ready(onReady);
+
+			function onClickBox1() {
+				let checked=$("#ev").is(":checked");
+				localStorage.setItem("checked1", checked);
+		
+			}
+			function onReady1() {
+			
+				let checked="true"==localStorage.getItem("checked1");
+				$("#ev").prop('checked1', checked);
+				$("#ev").click(onClickBox1);
+			}
+
+			$(document).ready(onReady1);
+
+
+var pc = document.getElementById('powercon');
+
+
 
 			var socket = io(); //load socket.io-client and connect to the host that serves the page
+
+			var sellyes = document.getElementById("syes");
+			var buyyes = document.getElementById("byes");
+		var sellno = document.getElementById("sno");
+		
+
+
 			window.addEventListener("load", function(){ //when page loads
+
+				sellyes.addEventListener("click", function(){
+	socket.emit("insert", {status: 1, alert: 1});
+});
+buyyes.addEventListener("click", function(){
+	socket.emit("buy",{status: 1, alert: 1});
+})
+	socket.on('insert', function(data){
+		if(data.alert){
+			console.log("Data alert " + data.alert);
+			output.innerHTML= '<p>'+ "Power Sold to MicroGrid" + '</p>';
+		}
+		else{
+			console.log("Data alert " + data.alert);
+			output.innerHTML= '<p><strong>'+ "Power Less than 0. You need to buy Power" + '</p></h5>';
+		}
+	});
+	socket.on('buy', function(data){
+		if(data.alert){
+			console.log("Data alert " + data.alert);
+			output1.innerHTML= '<p>'+ "Power Bought from MicroGrid" + '</p>';
+		}
+		else{
+			console.log("Data alert " + data.alert);
+			output1.innerHTML= '<p><strong>'+ "Power bought from Main grid (Extra charge) " + '</p></h5>';
+		}
+	});
+
 				var ac = document.getElementById("ac");
 				ac.addEventListener("change", function() { //add event listener for when checkbox changes
 					socket.emit("AC", Number(this.checked)); //send button status to server (as 1 or 0)
-					if(this.checked=='1')
-
-					powcon = powcon + 100;
+		
+			
+			
 				});
+
+
+					
+			
 				var ev = document.getElementById("ev");
 				ev.addEventListener("change", function() { //add event listener for when checkbox changes
 					socket.emit("Electric Vehicle", Number(this.checked)); //send button status to server (as 1 or 0)
+				
 				});
 				var wm = document.getElementById("wm");
 				wm.addEventListener("change", function() { //add event listener for when checkbox changes
 					socket.emit("Washing Machine", Number(this.checked)); //send button status to server (as 1 or 0)
+					
 				});
 				var pu = document.getElementById("pu");
 				pu.addEventListener("change", function() { //add event listener for when checkbox changes
 					socket.emit("Pump", Number(this.checked)); //send button status to server (as 1 or 0)
 				});
+
 			});
-			document.getElementById("power_con").innerHTML = powcon;
-			// if(document.getElementById("ac").checked){
-			// 	powcon = powcon + 100;
-			// }
-			// else{
-			// 	powcon = powcon + 100;
-			// }
+	
+
+
+
 			
 			</script>
 
 </body>
 </html>
 
-<!--No post or get req n file ..... t  wll not respond...   i use post in server.js file and using ejs im getting the valye... its wroking for hard coded value.-->

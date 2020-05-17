@@ -2,8 +2,11 @@ body{
 	margin: 0;
 	padding: 0;
 	height: 100vh;
-	background: rgb(146,142,210);
-background: linear-gradient(135deg, rgba(146,142,210,1) 8%, rgba(6,232,210,1) 48%, rgba(233,82,61,1) 88%);
+	/* background: rgb(146,142,210);
+background: linear-gradient(135deg, rgba(146,142,210,1) 8%, rgba(6,232,210,1) 48%, rgba(233,82,61,1) 88%); */
+background: rgb(150,219,227);
+background: radial-gradient(circle, rgba(150,219,227,1) 0%, rgba(15,115,87,1) 42%, rgba(108,83,49,1) 62%, rgba(37,6,55,1) 100%);
+
 }
 
 #particles-js {
