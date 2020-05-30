@@ -550,7 +550,7 @@ dbo.collection("PowerCon").updateOne(myquery, newvalues, function(err, res) {
                    var pconoldd = 0;
                   
 
-if(pconoldd>0)
+if(pconold>0)
     pconoldd = pconold  - 2000;
    else
    pconoldd = 0;
@@ -603,7 +603,7 @@ dbo.collection("PowerCon").updateOne(myquery, newvalues, function(err, res) {
                    var pconoldd = 0;
                   
 
-if(pconoldd>0)
+if(pconold>0)
     pconoldd = pconold  - 300;
    else
    pconoldd = 0;
@@ -656,7 +656,7 @@ dbo.collection("PowerCon").updateOne(myquery, newvalues, function(err, res) {
                    var pconoldd = 0;
                   
    
-   if(pconoldd>0)
+   if(pconold>0)
     pconoldd = pconold  - 1000;
    else
    pconoldd = 0;

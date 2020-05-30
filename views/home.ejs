@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css/home.css">
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa:600&display=swap" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
 </head>
 <body>
 <script src="js/particles.js"></script>
@@ -62,6 +63,8 @@
 	
 
 </div>
+<input type="button" class="bttn" value="reload" onclick="wis()"/>
+<input type="button" class="bttn" value="save" onclick="save()"/>
 
 	<h2 class="app">Appliances</h2>
 <div id="device" class="applist">
@@ -98,7 +101,9 @@
 				</label></div>
   	<div class="item"><label>1000</label></div>
   </div>
+  
 </div>
+
 <!-- <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -112,34 +117,58 @@
 
 var output = document.getElementById('output');
 var output1 = document.getElementById('output1');
-function onClickBox() {
-				let checked=$("#ac").is(":checked");
-				localStorage.setItem("checked", checked);
+// function onClickBox() {
+// 				let checked=$("#ac").is(":checked");
+// 				localStorage.setItem("checked", checked);
 		
-			}
-			function onReady() {
+// 			}
+// 			function onReady() {
 		
-				let checked="true"==localStorage.getItem("checked");
-				$("#ac").prop('checked', checked);
-				$("#ac").click(onClickBox);
-			}
-			$(document).ready(onReady);
+// 				let checked="true"==localStorage.getItem("checked");
+// 				$("#ac").prop('checked', checked);
+// 				$("#ac").click(onClickBox);
+// 			}
+// 			$(document).ready(onReady);
 
-			function onClickBox1() {
-				let checked=$("#ev").is(":checked");
-				localStorage.setItem("checked1", checked);
+// 			function onClickBox1() {
+// 				let checked=$("#ev").is(":checked");
+// 				localStorage.setItem("checked1", checked);
 		
-			}
-			function onReady1() {
+// 			}
+// 			function onReady1() {
 			
-				let checked="true"==localStorage.getItem("checked1");
-				$("#ev").prop('checked1', checked);
-				$("#ev").click(onClickBox1);
-			}
+// 				let checked="true"==localStorage.getItem("checked1");
+// 				$("#ev").prop('checked1', checked);
+// 				$("#ev").click(onClickBox1);
+// 			}
 
-			$(document).ready(onReady1);
+// 			$(document).ready(onReady1);
 
+function save(){
+    var checkbox = document.getElementById('ac');
+	localStorage.setItem('ac', checkbox.checked);
+	var checkbox1 = document.getElementById('ev');
+	localStorage.setItem('ev', checkbox1.checked);
+	var checkbox2 = document.getElementById('wm');
+	localStorage.setItem('wm', checkbox2.checked);
+	var checkbox3 = document.getElementById('pu');
+    localStorage.setItem('pu', checkbox3.checked);
+}
 
+function load(){    
+    var checked = JSON.parse(localStorage.getItem('ac'));
+	document.getElementById("ac").checked = checked;
+	var checked1 = JSON.parse(localStorage.getItem('ev'));
+	document.getElementById("ev").checked = checked1;
+	var checked2 = JSON.parse(localStorage.getItem('wm'));
+	document.getElementById("wm").checked = checked2;
+	var checked3 = JSON.parse(localStorage.getItem('pu'));
+    document.getElementById("pu").checked = checked3;
+}
+load();
+function wis(){
+location.reload();
+}
 var pc = document.getElementById('powercon');
 
 

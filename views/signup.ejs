@@ -17,24 +17,24 @@
 </ul>
 	<article class="br3 ba  b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
     <main class="pa4 black-80">
-       
+     
   <form action="signup" method="POST" accept-charset="utf-8">
     <fieldset id="sign_up" class="ba b--transparent ph0 mh0">
       <legend class="f4 fw6 ph0 mh0">Sign Up</legend>
        <div class="mt3">
         <label class="db fw6 lh-copy f6" for="name">Full Name</label>
         <input class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
-        type="name" 
+        type="text"
         name="name"  
         id="name"
         placeholder="Full Name"
-        value="<%= typeof name != 'undefined'? name: ''%>">
+    />
         <label class="db fw6 lh-copy f6" for="email">Email</label>
-      <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email" id="email" placeholder="Email" value="<%= typeof email != 'undefined'? email: ''%>">
+      <input class="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email" id="email" placeholder="Email" value="<%= typeof email != 'undefined'? email: ''%>"/>
       </div>
       <div class="mv3">
         <label class="db fw6 lh-copy f6" for="password">Password</label>
-        <input class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" placeholder="Password"  value="<%= typeof password != 'undefined'? password: ''%>">
+        <input class="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password"  id="password" placeholder="Password"  value="<%= typeof password != 'undefined'? password: ''%>"/>
       </div>
     </fieldset>
     <div class="mt3"><input class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" type="submit" value="Sign Up"></div>
