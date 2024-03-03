@@ -1,4 +1,4 @@
-# POWER MANAGEMENT IN DC MICROGRID
+# Power Management in DC Microgrid
 
 ## Introduction
 
